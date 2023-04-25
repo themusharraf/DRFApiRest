@@ -15,7 +15,7 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 # docker exec -it django_container python3 manage.py makemigrations
 # docker exec -it django_container python3 manage.py migrate
 
-# docker rmi django_image
-# docker image rm django_image
-# docker ps
-# docker container ls
+# docker rmi django_image         imageni o'chirish uchun
+# docker image rm django_image    2 usuli
+# docker ps                       docker contaner view
+# docker container ls             docker contaner view
