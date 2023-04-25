@@ -24,3 +24,9 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 # docker ps                       docker contaner view
 # docker container ls             docker contaner view
 # docker pull name                docker texlogi yuklash uchun dockerga
+
+
+# docker da psotgres db ochish
+#docker run --name p5_db -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=1 -d -p 5432:5432 postgres:alpine
+# docker exec -it -u postgres admin_db psql
+#docker exec -it p5_db psql -U postgres
