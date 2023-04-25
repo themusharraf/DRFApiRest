@@ -1,10 +1,14 @@
 FROM python:3.11.0-alpine
 
+# har doim cache dan olsih uchun
 ENV PYTHTONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
+
 WORKDIR /app
 COPY . /app
 
+
+# har doim cache dan olsih uchun
 RUN --mount=type=cache,id=custom-pip,target=/root/.cache/pip pip install -r /app/req.txt
 
 EXPOSE 8000
