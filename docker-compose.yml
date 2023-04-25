@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  web:
+    restart: always
+    build: .
+    container_name: Rest_api
+    volumes:
+      - static_volume:/app/static
+    ports:
+      - "8000:8000"
+    environment:
+      DEBUG: 'true'
+    depends_on:
+      - postgres
+
+    command: python3 manage.py runserver 0:8000
+  nginx:
+    build: nginx
+    restart: always
+    volumes:
+      - static_volume:/app/static
+    ports:
+      - "1000:80"
+    depends_on:
+      - web
+  postgres:
+    restart: always
+    image: postgres:alpine
+    container_name: api_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: restapi
+      POSTGRES_PASSWORD: 1
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data/
+
+volumes:
+  pgdata:
+  static_volume:
