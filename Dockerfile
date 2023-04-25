@@ -23,3 +23,4 @@ CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 # docker image rm django_image    2 usuli
 # docker ps                       docker contaner view
 # docker container ls             docker contaner view
+# docker pull name                docker texlogi yuklash uchun dockerga
