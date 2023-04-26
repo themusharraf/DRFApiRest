@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-ucm365i(hzt2l@uwp5^k@(5u%21v-2a-wb0=p-va2a=yr&)j21'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -81,7 +81,7 @@ DATABASES = {
         'PASSWORD': '1',
         'HOST': 'postgres',
         # 'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': 5432,
     }
 
 }
@@ -103,7 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
+CSRF_TRUSTED_ORIGINS = ['http://localhost:1000/']
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
