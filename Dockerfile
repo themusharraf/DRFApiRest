@@ -55,3 +55,6 @@ RUN python manage.py collectstatic --noinput
 # docker-compose down
 
 # dockerfile, docker-compose,docker-swarm
+
+# docker-compose exec web python manage.py migrate
+# docker-compose exec web python manage.py createsuperuser

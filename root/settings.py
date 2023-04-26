@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 
+from django.conf.global_settings import CSRF_COOKIE_DOMAIN
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -37,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'apps',
     'rest_framework',
+    'import_export',
 ]
 
 MIDDLEWARE = [
@@ -74,14 +77,18 @@ WSGI_APPLICATION = 'root.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #     'NAME': 'restapi',
+    #     'USER': 'postgres',
+    #     'PASSWORD': '1',
+    #     'HOST': 'postgres',
+    #     # 'HOST': 'localhost',
+    #     'PORT': 5432,
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'restapi',
-        'USER': 'postgres',
-        'PASSWORD': '1',
-        'HOST': 'postgres',
-        # 'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 
 }
@@ -103,7 +110,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-CSRF_TRUSTED_ORIGINS = ['http://localhost:1000/']
+CSRF_COOKIE_MASKED = True
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:1000',
+    'http://localhost:8000',
+]
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
