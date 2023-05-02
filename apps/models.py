@@ -12,19 +12,19 @@ class BaseModel(models.Model):
         abstract = True
 
 
-class Category(BaseModel, models.Model):
+class Category(BaseModel):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
 
-class Product(BaseModel, models.Model):
+class Product(BaseModel):
     name = models.CharField(max_length=250)
-    price = models.DecimalField( decimal_places=2, max_digits=10)
+    price = models.DecimalField(decimal_places=2, max_digits=10)
     description = models.TextField(max_length=222)
     category = models.ForeignKey('apps.Category', on_delete=models.CASCADE)
-    # author = models.ForeignKey('auth.User', default='auth.User', on_delete=models.CASCADE)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     slug = models.SlugField(max_length=255, unique=True)
 
     def save(self, *args, **kwargs):

@@ -15,6 +15,23 @@ services:
       - postgres
     command: python3 manage.py runserver 0:8000
 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.1
+    container_name: elasticsearch
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
   nginx:
     build: ./nginx
     restart: always
@@ -38,6 +55,9 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data/
 
+
 volumes:
   pgdata:
   static_volume:
+  esdata:
+    driver: local
