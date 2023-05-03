@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
 from apps.models import Product, Category
-from apps.serializers import ProductSerializer, CategorySerializer
+from apps.serializers import ProductSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from apps.permissions import IsAuthorOrReadOnly
 
