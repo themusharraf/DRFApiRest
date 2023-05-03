@@ -17,12 +17,12 @@ class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-
-class CategoryList(generics.ListCreateAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
-
-
-class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+#
+# class CategoryList(generics.ListCreateAPIView):
+#     queryset = Category.objects.all()
+#     serializer_class = CategorySerializer
+#
+#
+# class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Category.objects.all()
+#     serializer_class = CategorySerializer
